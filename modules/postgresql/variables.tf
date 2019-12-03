@@ -363,3 +363,7 @@ variable "delete_timeout" {
   type        = string
   default     = "10m"
 }
+
+variable "wait_for_previous_database_completed" {
+  description = "Use for enforce ordering between resource creation, intended to be set from an output of the 'getg5-terraform-google-sql-db' module previous call."
+}
