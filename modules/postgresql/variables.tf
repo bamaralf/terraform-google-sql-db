@@ -48,12 +48,6 @@ variable "zone" {
   description = "The zone for the master instance, it should be something like: `a`, `c`."
 }
 
-variable "peering_completed" {
-  description = "Optional. This is used to ensure that resources are created in the proper order when using private IPs and service network peering."
-  type        = string
-  default     = ""
-}
-
 variable "activation_policy" {
   description = "The activation policy for the master instance.Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`."
   type        = string
@@ -364,6 +358,14 @@ variable "delete_timeout" {
   default     = "10m"
 }
 
+<<<<<<< HEAD
 variable "wait_for_previous_database_completed" {
   description = "Use for enforce ordering between resource creation, intended to be set from an output of the 'getg5-terraform-google-sql-db' module previous call."
 }
+=======
+variable "module_depends_on" {
+  description = "List of modules or resources this module depends on."
+  type        = list(any)
+  default     = []
+}
+>>>>>>> upstream/master
