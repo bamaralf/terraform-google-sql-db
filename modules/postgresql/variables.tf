@@ -358,14 +358,8 @@ variable "delete_timeout" {
   default     = "10m"
 }
 
-<<<<<<< HEAD
-variable "wait_for_previous_database_completed" {
-  description = "Use for enforce ordering between resource creation, intended to be set from an output of the 'getg5-terraform-google-sql-db' module previous call."
-}
-=======
 variable "module_depends_on" {
   description = "List of modules or resources this module depends on."
   type        = list(any)
   default     = []
 }
->>>>>>> upstream/master
