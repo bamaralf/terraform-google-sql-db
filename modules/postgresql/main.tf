@@ -21,17 +21,6 @@ locals {
     enabled  = var.ip_configuration
     disabled = {}
   }
-<<<<<<< HEAD
-
-  peering_completed_enabled = var.peering_completed != "" ? true : false
-  wait_for_previous_database_completed_enabled = var.wait_for_previous_database_completed ? true : false
-
-  user_labels_including_tf_dependency = {
-    enabled  = merge(map("tf_dependency", var.peering_completed), var.user_labels)
-    disabled = var.user_labels
-  }
-=======
->>>>>>> upstream/master
 }
 
 resource "google_sql_database_instance" "default" {
@@ -83,16 +72,7 @@ resource "google_sql_database_instance" "default" {
       }
     }
 
-<<<<<<< HEAD
-    // Define a label to force a dependency to the creation of the network peering.
-    // Define a label to force a dependency of a previous database addition to avoid concurrent instances of this module to run. 
-    // You can run one instance of this module at a time otherwise it will lead to GCP errors.
-    // Substitute this with a module dependency once the module is migrated to
-    // Terraform 0.12 and the 'module depends_on' argument is implemented.
-    user_labels = local.user_labels_including_tf_dependency["${local.peering_completed_enabled ? "enabled" : "disabled"}",local.wait_for_previous_database_completed_enabled ? "enabled" : "disabled"}"]
-=======
     user_labels = var.user_labels
->>>>>>> upstream/master
 
     location_preference {
       zone = "${var.region}-${var.zone}"
